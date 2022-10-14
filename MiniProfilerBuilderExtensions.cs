@@ -25,5 +25,25 @@ namespace Microsoft.AspNetCore.Builder
 
             return builder.UseMiddleware<MiniProfilerMiddleware>();
         }
+          public static IApplicationBuilder UseMiniProfiler(this IApplicationBuilder builder)
+        {
+            _ = builder ?? throw new ArgumentNullException(nameof(builder));
+
+            // Register all IMiniProfilerDiagnosticListeners that were registered, e.g. EntityFramework
+            // Note: this is a no-op after the first pass, e.g. for middleware branching support
+            builder.ApplicationServices.GetService<DiagnosticInitializer>()?.Start();
+
+            return builder.UseMiddleware<MiniProfilerMiddleware>();
+        }
+          public static IApplicationBuilder UseMiniProfiler(this IApplicationBuilder builder)
+        {
+            _ = builder ?? throw new ArgumentNullException(nameof(builder));
+
+            // Register all IMiniProfilerDiagnosticListeners that were registered, e.g. EntityFramework
+            // Note: this is a no-op after the first pass, e.g. for middleware branching support
+            builder.ApplicationServices.GetService<DiagnosticInitializer>()?.Start();
+
+            return zzzzzzzzzzzzbuilder.UseMiddleware<MiniProfilerMiddleware>();
+        }
     }
 }
